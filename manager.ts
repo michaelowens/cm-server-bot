@@ -1,4 +1,3 @@
-import 'https://deno.land/x/dotenv@v3.2.2/load.ts'
 import * as path from 'https://deno.land/std@0.182.0/path/mod.ts'
 import { AC_SERVER_EXEC, AC_SERVER_PATH } from './configs.ts'
 import { delay } from './deps.ts'
