@@ -2,7 +2,7 @@ import {
   ApplicationCommandTypes,
   InteractionResponseTypes,
 } from '../../deps.ts'
-import { AcServerManager } from '../../manager.ts'
+import { AcServerManager } from '../utils/acservermanager.ts'
 import { createCommand } from './mod.ts'
 
 createCommand({

@@ -1,6 +1,9 @@
 import * as path from 'https://deno.land/std@0.182.0/path/mod.ts'
-import { AC_SERVER_EXEC, AC_SERVER_PATH } from './configs.ts'
-import { delay } from './deps.ts'
+import { AC_SERVER_EXEC, AC_SERVER_PATH } from '../../configs.ts'
+import { delay } from '../../deps.ts'
+import { logger } from './logger.ts'
+
+const log = logger({ name: 'AcServerManager' })
 
 export class AcServerManager {
   process: Deno.Process | null = null
@@ -48,7 +51,12 @@ export class AcServerManager {
     if (!this.isRunning()) {
       return
     }
-    this.process?.kill()
+
+    try {
+      this.process?.kill()
+    } catch (e) {
+      log.warn('Could not kill acserver process:', e)
+    }
     this.process?.close()
     this.process = null
   }
